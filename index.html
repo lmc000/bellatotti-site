@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Totti | Elegância em Cada Passo</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f6f4;
+      color: #222;
+    }
+
+    header {
+      padding: 30px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      margin: 10px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .ml { background: #3483fa; }
+    .shopee { background: #ee4d2d; }
+
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+    }
+
+    .card p {
+      padding: 15px;
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .admin {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: black;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="admin" onclick="toggleAdmin()">EDITAR</div>
+
+<header contenteditable="true">BELLA TOTTI</header>
+
+<section class="hero">
+  <h1 contenteditable="true">Elegância em cada passo</h1>
+  <p contenteditable="true">Saltos sofisticados para mulheres que querem marcar presença</p>
+
+  <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn ml">Mercado Livre</a>
+  <a href="https://shopee.com.br/bellatottishoes" class="btn shopee">Shopee</a>
+</section>
+
+<section class="section">
+  <h2>Mais Vendidos</h2>
+
+  <div class="products">
+    <div class="card">
+      <img src="https://via.placeholder.com/300">
+      <p contenteditable="true">Scarpin Premium</p>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300">
+      <p contenteditable="true">Sandália Elegance</p>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300">
+      <p contenteditable="true">Salto Clássico</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Avaliações</h2>
+  <p contenteditable="true">⭐️⭐️⭐️⭐️⭐️ Produto lindo e confortável!</p>
+</section>
+
+<footer contenteditable="true">
+  © 2026 Bella Totti
+</footer>
+
+<script>
+function toggleAdmin() {
+  alert("Modo edição ativado! Clique nos textos para editar.");
+}
+</script>
+
+</body>
+</html>
