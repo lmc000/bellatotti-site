@@ -1,159 +1,252 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bella Totti | Elegância em Cada Passo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella Totti | Luxury Experience</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f8f6f4;
-      color: #222;
-    }
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #fdfcfb;
+  color: #111;
+  overflow-x: hidden;
+}
 
-    header {
-      padding: 30px;
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      letter-spacing: 3px;
-    }
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  z-index: 10;
+  color: white;
+}
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-    }
+.logo {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 3px;
+}
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
 
-    .hero p {
-      color: #666;
-      margin-bottom: 30px;
-    }
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
 
-    .btn {
-      padding: 14px 28px;
-      margin: 10px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      display: inline-block;
-    }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1.2s ease;
+}
 
-    .ml { background: #3483fa; }
-    .shopee { background: #ee4d2d; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  margin-bottom: 10px;
+}
 
-    .section {
-      padding: 60px 20px;
-      text-align: center;
-    }
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
+.btn {
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin: 10px;
+  font-weight: 500;
+  transition: 0.3s;
+}
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      transition: 0.3s;
-    }
+.btn-white {
+  background: white;
+  color: black;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.btn-white:hover { opacity: 0.8; }
 
-    .card img {
-      width: 100%;
-    }
+.section {
+  padding: 120px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .card p {
-      padding: 15px;
-      font-weight: 500;
-    }
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
 
-    footer {
-      padding: 30px;
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-    }
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
 
-    .admin {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: black;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-  </style>
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card span {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.full-banner {
+  height: 70vh;
+  background: url('https://images.unsplash.com/photo-1520975916090-3105956dac38') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.full-banner h2 {
+  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+}
+
+footer {
+  text-align: center;
+  padding: 60px;
+  font-size: 14px;
+  color: #777;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
 <body>
 
-<div class="admin" onclick="toggleAdmin()">EDITAR</div>
-
-<header contenteditable="true">BELLA TOTTI</header>
+<header>
+  <div class="logo">BELLA TOTTI</div>
+</header>
 
 <section class="hero">
-  <h1 contenteditable="true">Elegância em cada passo</h1>
-  <p contenteditable="true">Saltos sofisticados para mulheres que querem marcar presença</p>
+  <div class="hero-content">
+    <h1>Elegância que se sente</h1>
+    <p>Uma coleção criada para destacar sua presença</p>
 
-  <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn ml">Mercado Livre</a>
-  <a href="https://shopee.com.br/bellatottishoes" class="btn shopee">Shopee</a>
+    <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-white">Comprar</a>
+  </div>
 </section>
 
-<section class="section">
-  <h2>Mais Vendidos</h2>
+<section class="section fade">
+  <div class="about">
+    <div>
+      <h2>Sobre a marca</h2>
+      <p>
+        Bella Totti nasce da fusão entre elegância e atitude.
+        Cada modelo é pensado para mulheres que não passam despercebidas.
+        Mais do que calçados, criamos presença.
+      </p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2">
+  </div>
+</section>
 
-  <div class="products">
+<section class="section fade">
+  <h2>Coleção</h2>
+  <div class="collection">
     <div class="card">
-      <img src="https://via.placeholder.com/300">
-      <p contenteditable="true">Scarpin Premium</p>
+      <img src="https://images.unsplash.com/photo-1584735175315-9d5df23be620">
+      <span>Elegance Line</span>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/300">
-      <p contenteditable="true">Sandália Elegance</p>
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
+      <span>Power Heels</span>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/300">
-      <p contenteditable="true">Salto Clássico</p>
+      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+      <span>Luxury Edition</span>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <h2>Avaliações</h2>
-  <p contenteditable="true">⭐️⭐️⭐️⭐️⭐️ Produto lindo e confortável!</p>
+<section class="full-banner">
+  <h2>Mais que um salto. Uma afirmação.</h2>
 </section>
 
-<footer contenteditable="true">
-  © 2026 Bella Totti
+<footer>
+© 2026 Bella Totti — Todos os direitos reservados
 </footer>
 
 <script>
-function toggleAdmin() {
-  alert("Modo edição ativado! Clique nos textos para editar.");
-}
+const faders = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
 </script>
 
 </body>
