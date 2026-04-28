@@ -3,163 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bellatotti | Elegância Premium</title>
-<meta name="description" content="Scarpin, sandália e salto alto feminino sofisticado. Compre Bellatotti.">
+<title>Bella Totti | Saltos que valorizam sua presença</title>
+<meta name="description" content="Scarpin e sandálias de salto alto elegantes e confortáveis. Compre na Bella Totti com envio rápido.">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#ffffff;
-  color:#111;
-}
-
-header{
-  position:fixed;
-  width:100%;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  padding:20px 40px;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(10px);
-  z-index:10;
-}
-
-.logo{
-  font-family:'Playfair Display';
-  letter-spacing:3px;
-}
-
-.hero{
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-  position:relative;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.45);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-}
-
-.hero h1{
-  font-family:'Playfair Display';
-  font-size:56px;
-}
-
-.hero p{
-  margin:15px 0 30px;
-}
-
-.btn{
-  padding:14px 30px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:500;
-  margin:8px;
-  display:inline-block;
-}
-
-.btn-ml{background:#3483fa;color:white}
-.btn-shopee{background:#ee4d2d;color:white}
-
-.section{
-  padding:100px 40px;
-  max-width:1200px;
-  margin:auto;
-}
-
-.section h2{
-  font-family:'Playfair Display';
-  font-size:36px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-  margin-top:30px;
-}
-
-.card{
-  background:#fff;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-.card img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:20px;
-}
-
-.card h3{
-  margin:0 0 10px;
-}
-
-.buy-buttons a{
-  display:block;
-  margin-top:8px;
-  text-align:center;
-}
-
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
-
-.about img{
-  width:100%;
-  border-radius:15px;
-}
-
-footer{
-  text-align:center;
-  padding:40px;
-  background:#111;
-  color:#fff;
-}
-
-.social a{
-  margin:0 10px;
-  color:white;
-  text-decoration:none;
-}
-
-@media(max-width:768px){
-  .about{grid-template-columns:1fr}
-  .hero h1{font-size:38px}
-}
+body{margin:0;font-family:'Inter',sans-serif;background:#fff;color:#111}
+header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);z-index:10}
+.logo{font-family:'Playfair Display';letter-spacing:3px}
+.hero{height:92vh;background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative}
+.hero:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:0 20px}
+.hero h1{font-family:'Playfair Display';font-size:48px;margin:0 0 10px}
+.hero p{opacity:.9;margin:0 0 24px}
+.btn{display:inline-block;padding:14px 28px;border-radius:28px;text-decoration:none;font-weight:600;margin:6px}
+.btn-ml{background:#3483fa;color:#fff}
+.btn-shopee{background:#ee4d2d;color:#fff}
+.section{padding:80px 20px;max-width:1100px;margin:auto}
+.section h2{font-family:'Playfair Display';font-size:34px;margin:0 0 10px}
+.sub{color:#666;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);display:flex;flex-direction:column}
+.card img{width:100%;height:300px;object-fit:cover}
+.card-content{padding:16px}
+.card h3{margin:0 0 6px}
+.price{font-weight:600;margin:6px 0 10px}
+.badges{font-size:12px;color:#666;margin-bottom:10px}
+.buy a{display:block;text-align:center;margin-top:8px}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+.review{background:#fafafa;border-radius:12px;padding:14px}
+.review b{display:block;margin-bottom:6px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.about img{width:100%;border-radius:14px}
+.footer{background:#111;color:#fff;text-align:center;padding:40px}
+.social a{margin:0 8px;color:#fff;text-decoration:none}
+.whatsapp{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;padding:14px 16px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+@media(max-width:768px){.about{grid-template-columns:1fr}.hero h1{font-size:34px}}
 </style>
 </head>
-
 <body>
 
 <header>
@@ -168,16 +51,16 @@ footer{
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Elegância em cada passo</h1>
-    <p>Saltos femininos sofisticados</p>
-
+    <h1>Salto alto que valoriza sua presença</h1>
+    <p>Elegância, conforto e acabamento premium para destacar qualquer look.</p>
     <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Comprar no Mercado Livre</a>
     <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Comprar na Shopee</a>
   </div>
 </section>
 
 <section class="section">
-  <h2>Mais Vendidos</h2>
+  <h2>Mais vendidos</h2>
+  <div class="sub">Envio rápido • Troca fácil • +5.000 pedidos</div>
 
   <div class="grid">
 
@@ -185,9 +68,11 @@ footer{
       <img src="https://images.unsplash.com/photo-1584735175315-9d5df23be620">
       <div class="card-content">
         <h3>Scarpin Premium</h3>
-        <div class="buy-buttons">
-          <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Mercado Livre</a>
-          <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Shopee</a>
+        <div class="badges">Conforto reforçado • Acabamento premium</div>
+        <div class="price">A partir de R$149</div>
+        <div class="buy">
+          <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Ver no Mercado Livre</a>
+          <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Ver na Shopee</a>
         </div>
       </div>
     </div>
@@ -196,9 +81,11 @@ footer{
       <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
       <div class="card-content">
         <h3>Sandália Luxo</h3>
-        <div class="buy-buttons">
-          <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Mercado Livre</a>
-          <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Shopee</a>
+        <div class="badges">Leve • Estável • Versátil</div>
+        <div class="price">A partir de R$139</div>
+        <div class="buy">
+          <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Ver no Mercado Livre</a>
+          <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Ver na Shopee</a>
         </div>
       </div>
     </div>
@@ -207,25 +94,39 @@ footer{
 </section>
 
 <section class="section">
+  <h2>O que dizem nossas clientes</h2>
+  <div class="reviews">
+    <div class="review"><b>⭐⭐⭐⭐⭐</b>"Muito confortável, usei o dia todo sem dor. Acabamento lindo." — Ana</div>
+    <div class="review"><b>⭐⭐⭐⭐⭐</b>"Chegou rápido e serviu perfeito. Já comprei outro modelo." — Juliana</div>
+    <div class="review"><b>⭐⭐⭐⭐⭐</b>"Salto estável e elegante. Recebi vários elogios." — Carla</div>
+  </div>
+</section>
+
+<section class="section">
   <div class="about">
     <div>
       <h2>Sobre a Bella Totti</h2>
-      <p>
-        Criamos calçados para mulheres que valorizam elegância, presença e confiança.
-        Cada detalhe é pensado para destacar sua identidade.
-      </p>
+      <p>Criamos calçados para mulheres que valorizam presença, elegância e confiança. Cada modelo é pensado para combinar estilo com conforto real no dia a dia.</p>
+      <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Comprar agora</a>
     </div>
     <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2">
   </div>
 </section>
 
-<footer>
+<section class="section">
+  <h2>Siga a marca</h2>
+  <div class="sub">Novidades, looks e promoções</div>
   <div class="social">
     <a href="https://instagram.com">Instagram</a>
     <a href="https://tiktok.com">TikTok</a>
   </div>
-  <p>© 2026 Bella Totti</p>
-</footer>
+</section>
+
+<div class="footer">
+  © 2026 Bella Totti
+</div>
+
+<a class="whatsapp" href="https://wa.me/SEUNUMERO?text=Oi%2C+vim+do+site+Bella+Totti+e+quero+saber+sobre+um+modelo" target="_blank">Falar no WhatsApp</a>
 
 </body>
 </html>
