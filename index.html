@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Bella Totti | Scarpin, Sandália e Salto Alto Feminino</title>
-<meta name="description" content="Calçados femininos elegantes: scarpin, sandália e salto alto. Compre na Bella Totti com estilo e sofisticação.">
+<title>Bellatotti | Luxury Experience</title>
+<meta name="description" content="Calçados femininos premium: scarpin, sandálias e salto alto sofisticado.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -14,47 +13,55 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #fdfcfb;
-  color: #111;
+  background: #0f0f0f;
+  color: white;
+  overflow-x: hidden;
   cursor: none;
 }
 
-/* CUSTOM CURSOR */
+/* LOADER */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'Playfair Display';
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+/* CURSOR */
 .cursor {
   width: 20px;
   height: 20px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   transform: translate(-50%, -50%);
+  transition: transform 0.2s;
   z-index: 999;
 }
 
-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 10;
-  color: white;
+.cursor.active {
+  transform: scale(2);
 }
 
 .hero {
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   text-align: center;
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 64px;
+  font-family: 'Playfair Display';
+  font-size: 70px;
 }
 
 .section {
@@ -65,8 +72,8 @@ header {
 
 .reveal {
   opacity: 0;
-  transform: translateY(80px);
-  transition: all 1.2s ease;
+  transform: translateY(100px);
+  transition: 1.2s ease;
 }
 
 .reveal.active {
@@ -76,50 +83,60 @@ header {
 
 .collection {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
 }
 
 .card {
   position: relative;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .card img {
   width: 100%;
-  height: 400px;
+  height: 500px;
   object-fit: cover;
-  transition: 0.6s;
+  transition: 0.7s;
 }
 
 .card:hover img {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
 
 .card span {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: white;
-}
-
-.product-page {
-  display: none;
-  padding: 100px 40px;
-}
-
-.product-page.active {
-  display: block;
+  bottom: 30px;
+  left: 30px;
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 25px;
-  margin: 10px;
+  margin-top: 20px;
+  padding: 12px 30px;
   border-radius: 30px;
   text-decoration: none;
-  background: black;
+  background: white;
+  color: black;
+}
+
+.footer {
+  text-align: center;
+  padding: 60px;
+}
+
+.social a {
+  margin: 10px;
   color: white;
+  text-decoration: none;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
 }
 
 </style>
@@ -127,59 +144,84 @@ header {
 
 <body>
 
+<div id="loader">BELLA TOTTI</div>
 <div class="cursor"></div>
 
-<header>
-  <div>BELLA TOTTI</div>
-</header>
-
+<div id="home" class="page active">
 <section class="hero">
   <div>
-    <h1>Elegância que se impõe</h1>
-    <p>Scarpin, sandália e salto alto feminino premium</p>
+    <h1>Elegância absoluta</h1>
+    <p>Descubra a nova coleção</p>
+    <a href="#" class="btn" onclick="showPage('prod')">Explorar</a>
   </div>
 </section>
 
 <section class="section reveal">
   <h2>Coleção</h2>
-
   <div class="collection">
-    <div class="card" onclick="openProduct('p1')">
+
+    <div class="card" onclick="showPage('p1')">
       <img src="https://images.unsplash.com/photo-1584735175315-9d5df23be620">
       <span>Scarpin Premium</span>
     </div>
 
-    <div class="card" onclick="openProduct('p2')">
+    <div class="card" onclick="showPage('p2')">
       <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
       <span>Sandália Luxo</span>
     </div>
+
   </div>
 </section>
 
-<!-- PRODUCT PAGE -->
-<div id="p1" class="product-page">
-  <h2>Scarpin Premium</h2>
-  <p>Elegância e conforto para qualquer ocasião.</p>
+<section class="section reveal">
+  <h2>Sobre</h2>
+  <p>Bella Totti é uma marca criada para mulheres que querem presença, elegância e poder em cada passo.</p>
+</section>
 
-  <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn">Comprar no Mercado Livre</a>
-  <a href="https://shopee.com.br/bellatottishoes" class="btn">Comprar na Shopee</a>
+<section class="footer">
+  <div class="social">
+    <a href="https://instagram.com">Instagram</a>
+    <a href="https://tiktok.com">TikTok</a>
+  </div>
+</section>
 </div>
 
-<div id="p2" class="product-page">
-  <h2>Sandália Luxo</h2>
-  <p>Design sofisticado para destacar sua presença.</p>
+<!-- PRODUCT PAGES -->
+<div id="p1" class="page">
+  <section class="section">
+    <h2>Scarpin Premium</h2>
+    <p>Design sofisticado e confortável.</p>
+    <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn">Mercado Livre</a>
+    <a href="https://shopee.com.br/bellatottishoes" class="btn">Shopee</a>
+  </section>
+</div>
 
-  <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn">Comprar no Mercado Livre</a>
-  <a href="https://shopee.com.br/bellatottishoes" class="btn">Comprar na Shopee</a>
+<div id="p2" class="page">
+  <section class="section">
+    <h2>Sandália Luxo</h2>
+    <p>Elegância que se destaca.</p>
+    <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn">Mercado Livre</a>
+    <a href="https://shopee.com.br/bellatottishoes" class="btn">Shopee</a>
+  </section>
 </div>
 
 <script>
+
+// LOADER
+window.onload = () => {
+  setTimeout(() => document.getElementById('loader').style.display = 'none', 1200);
+};
 
 // CURSOR
 const cursor = document.querySelector('.cursor');
 document.addEventListener('mousemove', e => {
   cursor.style.top = e.clientY + 'px';
   cursor.style.left = e.clientX + 'px';
+});
+
+document.querySelectorAll('a, .card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
 });
 
 // REVEAL
@@ -192,9 +234,9 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// PRODUCT PAGE
-function openProduct(id) {
-  document.querySelectorAll('.product-page').forEach(p => p.classList.remove('active'));
+// PAGE TRANSITION
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
