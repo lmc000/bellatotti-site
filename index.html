@@ -3,112 +3,221 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bellatotti | O salto que transforma o seu look</title>
-<meta name="description" content="Scarpin e sandálias de salto alto elegantes e confortáveis. Bellatotti.">
-<meta name="keywords" content="scarpin confortável, salto alto feminino elegante, sandália salto alto confortável, sapato feminino sofisticado">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:'Inter',sans-serif;background:#fff;color:#111}
-header{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);z-index:10}
+
+header{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;
+padding:18px 28px;
+background:rgba(255,255,255,.9);
+backdrop-filter:blur(10px);
+z-index:10
+}
+
 .logo{font-family:'Playfair Display';letter-spacing:3px}
-.hero{height:92vh;background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative}
-.hero:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.hero-content{position:relative;z-index:2;max-width:720px;padding:0 20px}
-.hero h1{font-family:'Playfair Display';font-size:48px;margin:0 0 10px}
-.hero p{opacity:.9;margin:0 0 24px}
-.btn{display:inline-block;padding:14px 28px;border-radius:28px;text-decoration:none;font-weight:600;margin:6px}
+
+.hero{
+height:90vh;
+background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover no-repeat;
+display:flex;align-items:center;justify-content:center;
+text-align:center;color:#fff;position:relative
+}
+
+.hero:after{
+content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)
+}
+
+.hero-content{position:relative;z-index:2;max-width:700px}
+
+.hero h1{
+font-family:'Playfair Display';
+font-size:48px;
+margin:0 0 10px
+}
+
+.section{
+padding:90px 20px;
+max-width:1100px;
+margin:auto
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px
+}
+
+.card{
+background:#fff;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+cursor:pointer
+}
+
+.card:hover{
+transform:translateY(-8px)
+}
+
+.card img{
+width:100%;
+height:300px;
+object-fit:cover
+}
+
+.card-content{padding:16px}
+
+.price{font-weight:600;margin:6px 0}
+
+.btn{
+display:block;
+padding:12px;
+border-radius:25px;
+text-align:center;
+text-decoration:none;
+margin-top:8px;
+font-weight:600
+}
+
 .btn-ml{background:#ffd700;color:#000}
 .btn-shopee{background:#ee4d2d;color:#fff}
-.section{padding:80px 20px;max-width:1100px;margin:auto}
-.section h2{font-family:'Playfair Display';font-size:34px;margin:0 0 10px}
-.sub{color:#666;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.08);display:flex;flex-direction:column}
-.card img{width:100%;height:300px;object-fit:cover}
-.card-content{padding:16px}
-.card h3{margin:0 0 6px}
-.price{font-weight:600;margin:6px 0 10px}
-.badges{font-size:12px;color:#666;margin-bottom:10px}
-.buy a{display:block;text-align:center;margin-top:8px}
-.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
-.review{background:#fafafa;border-radius:12px;padding:14px}
-.review b{display:block;margin-bottom:6px}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.about img{width:100%;border-radius:14px}
-.footer{background:#111;color:#fff;text-align:center;padding:40px}
-.social-icons a{margin:0 10px;color:#fff;font-size:22px}
-.whatsapp{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;padding:14px 16px;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.2)}
-@media(max-width:768px){.about{grid-template-columns:1fr}.hero h1{font-size:34px}}
+
+.benefits{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+text-align:center
+}
+
+.benefits div{
+padding:20px;
+background:#fafafa;
+border-radius:10px
+}
+
+.benefits i{
+font-size:24px;
+margin-bottom:10px
+}
+
+.social-icons{
+text-align:center;
+margin-top:20px
+}
+
+.social-icons a{
+margin:0 12px;
+font-size:26px;
+color:#111;
+transition:.3s
+}
+
+.social-icons a:hover{
+opacity:.6
+}
+
+.footer{
+background:#111;
+color:#fff;
+text-align:center;
+padding:40px
+}
+
+.whatsapp{
+position:fixed;
+right:18px;
+bottom:18px;
+background:#25d366;
+color:#fff;
+padding:14px 16px;
+border-radius:999px;
+text-decoration:none;
+font-weight:600;
+box-shadow:0 8px 20px rgba(0,0,0,.2)
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">BELLA TOTTI</div>
+<div class="logo">BELLATOTTI</div>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1>O salto que transforma o seu look</h1>
-    <p>Elegância, conforto e segurança para você se destacar em qualquer ocasião.</p>
-  </div>
+<div class="hero-content">
+<h1>O salto que transforma o seu look</h1>
+<p>Elegância, conforto e segurança para você se destacar em qualquer ocasião.</p>
+</div>
 </section>
 
 <section class="section">
-  <h2>Mais vendidos</h2>
-  <p style="color:#e63946;font-weight:600;">🔥 Estoque limitado para pronta entrega</p>
-  <div class="sub">Envio rápido • Troca fácil • +5.000 pedidos</div>
 
-  <div class="grid">
+<h2>Mais vendidos</h2>
+<p style="color:#e63946;font-weight:600;">🔥 Estoque limitado</p>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1584735175315-9d5df23be620">
-      <div class="card-content">
-        <h3>Scarpin Premium Bellatotti</h3>
-        <div class="badges">✔ Não machuca • ✔ Salto estável • ✔ Elegante</div>
-        <div class="price">A partir de R$149</div>
-        <div class="buy">
-          <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Ver no Mercado Livre</a>
-          <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Ver na Shopee</a>
-        </div>
-      </div>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
-      <div class="card-content">
-        <h3>Sandália Luxo</h3>
-        <div class="badges">✔ Leve • ✔ Estável • ✔ Confortável</div>
-        <div class="price">A partir de R$139</div>
-        <div class="buy">
-          <a href="https://lista.mercadolivre.com.br/_CustId_169139652" class="btn btn-ml">Ver no Mercado Livre</a>
-          <a href="https://shopee.com.br/bellatottishoes" class="btn btn-shopee">Ver na Shopee</a>
-        </div>
-      </div>
-    </div>
+<div class="card" onclick="window.open('https://lista.mercadolivre.com.br/_CustId_169139652')">
+<img src="https://images.unsplash.com/photo-1584735175315-9d5df23be620">
+<div class="card-content">
+<h3>Scarpin Premium</h3>
+<div class="price">R$149</div>
+<a class="btn btn-ml">Mercado Livre</a>
+<a class="btn btn-shopee">Shopee</a>
+</div>
+</div>
 
-  </div>
+<div class="card" onclick="window.open('https://shopee.com.br/bellatottishoes')">
+<img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+<div class="card-content">
+<h3>Sandália Luxo</h3>
+<div class="price">R$139</div>
+<a class="btn btn-ml">Mercado Livre</a>
+<a class="btn btn-shopee">Shopee</a>
+</div>
+</div>
+
+</div>
 </section>
 
 <section class="section">
-  <h2>Siga a marca</h2>
-  <div class="sub">Novidades, looks e promoções</div>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/bellatotti.oficial" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/bellatotti.br/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@bellatotti.br" target="_blank"><i class="fab fa-tiktok"></i></a>
-  </div>
+<h2>Por que escolher Bellatotti?</h2>
+
+<div class="benefits">
+<div><i class="fas fa-truck"></i><br>Envio rápido</div>
+<div><i class="fas fa-star"></i><br>+5.000 clientes</div>
+<div><i class="fas fa-shoe-prints"></i><br>Conforto real</div>
+<div><i class="fas fa-exchange-alt"></i><br>Troca fácil</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Siga a marca</h2>
+
+<div class="social-icons">
+<a href="https://www.facebook.com/bellatotti.oficial" target="_blank"><i class="fab fa-facebook"></i></a>
+<a href="https://www.instagram.com/bellatotti.br/" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://www.tiktok.com/@bellatotti.br" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
 </section>
 
 <div class="footer">
-  © 2026 Bellatotti
+© 2026 Bellatotti
 </div>
 
-<a class="whatsapp" href="https://wa.me/5562985337195?text=Oi%2C+vim+do+site+e+quero+comprar+um+salto+Bellatotti" target="_blank">Falar no WhatsApp</a>
+<a class="whatsapp" href="https://wa.me/5562985337195?text=Oi%2C+vim+do+site+e+quero+comprar+um+salto+Bellatotti" target="_blank">
+Falar no WhatsApp
+</a>
 
 </body>
 </html>
