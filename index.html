@@ -968,7 +968,7 @@ footer p {
 
   <div class="products-grid">
 
-    <div class="product-card reveal" onclick="abrirML('https://lista.mercadolivre.com.br/_CustId_169139652')">
+    <div class="product-card reveal" onclick="window.location.href='https://lista.mercadolivre.com.br/_CustId_169139652'">
       <div class="product-img-wrap">
         <span class="product-label">Destaque</span>
         <img src="meganero.jpg" alt="Salto Alto Premium Bellatotti" loading="lazy">
@@ -980,11 +980,11 @@ footer p {
         <h3 class="product-name">Salto Alto Premium</h3>
         <p class="product-desc">Conceito premium que une design arrojado e acabamento de alto padrão</p>
         <div class="product-btns">
-          <a class="btn-ml" href="#" onclick="event.stopPropagation(); abrirML('https://lista.mercadolivre.com.br/_CustId_169139652'); return false;">
+          <a class="btn-ml" href="https://lista.mercadolivre.com.br/_CustId_169139652" onclick="event.stopPropagation()">
             <i class="fas fa-shopping-cart" style="font-size:12px;"></i>
             Mercado Livre
           </a>
-          <a class="btn-shopee" href="intent://shopee.com.br/bellatottishoes#Intent;scheme=https;package=com.shopee.br;end" onclick="event.stopPropagation(); abrirShopee('https://shopee.com.br/bellatottishoes'); return false;">
+          <a class="btn-shopee" href="https://shopee.com.br/bellatottishoes" onclick="event.stopPropagation()">
             <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
             Shopee
           </a>
@@ -992,7 +992,7 @@ footer p {
       </div>
     </div>
 
-    <div class="product-card reveal" style="transition-delay:0.15s" onclick="abrirShopee('https://shopee.com.br/bellatottishoes')">
+    <div class="product-card reveal" style="transition-delay:0.15s" onclick="window.location.href='https://shopee.com.br/bellatottishoes'">
       <div class="product-img-wrap">
         <span class="product-label">Novo</span>
         <img src="estrella.jpg" alt="Salto Médio Luxo Bellatotti" loading="lazy">
@@ -1004,11 +1004,11 @@ footer p {
         <h3 class="product-name">Salto Médio Luxo</h3>
         <p class="product-desc">Elegância e conforto para o dia a dia</p>
         <div class="product-btns">
-          <a class="btn-ml" href="#" onclick="event.stopPropagation(); abrirML('https://lista.mercadolivre.com.br/_CustId_169139652'); return false;">
+          <a class="btn-ml" href="https://lista.mercadolivre.com.br/_CustId_169139652" onclick="event.stopPropagation()">
             <i class="fas fa-shopping-cart" style="font-size:12px;"></i>
             Mercado Livre
           </a>
-          <a class="btn-shopee" href="intent://shopee.com.br/bellatottishoes#Intent;scheme=https;package=com.shopee.br;end" onclick="event.stopPropagation(); abrirShopee('https://shopee.com.br/bellatottishoes'); return false;">
+          <a class="btn-shopee" href="https://shopee.com.br/bellatottishoes" onclick="event.stopPropagation()">
             <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
             Shopee
           </a>
@@ -1130,22 +1130,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Deep links
-function abrirML(url) {
-  const deepLink = 'meli://' + url.replace('https://', '');
-  window.location = deepLink;
-  setTimeout(() => { window.open(url, '_blank'); }, 1500);
-}
-
-function abrirShopee(url) {
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  if (isAndroid) {
-    window.location = 'intent://' + url.replace('https://', '') + '#Intent;scheme=https;package=com.shopee.br;end';
-  } else {
-    window.open(url, '_blank');
-  }
-}
 
 // Mobile nav
 function openMobileNav() {
