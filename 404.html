@@ -3,19 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bellatotti - Redirecionando...</title>
-    <meta http-equiv="refresh" content="0; url=https://www.bellatotti.com.br/">
+    <title>Bellatotti - Página não encontrada</title>
+    <meta http-equiv="refresh" content="4; url=https://www.bellatotti.com.br/">
     <link rel="canonical" href="https://www.bellatotti.com.br/">
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #c9a96e; }
+        body {
+            font-family: 'Jost', system-ui, sans-serif;
+            background: #f8f5f0;
+            color: #0d0d0d;
+            text-align: center;
+            padding: 80px 20px;
+            margin: 0;
+        }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: #c9a96e;
+            margin-bottom: 16px;
+        }
+        p {
+            font-size: 18px;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            color: #555;
+        }
+        a {
+            color: #c9a96e;
+            text-decoration: none;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
-    <h1>Redirecionando para Bellatotti...</h1>
-    <p>Você será redirecionado automaticamente em um segundo.</p>
+    <h1>Ops... Página não encontrada</h1>
+    <p>Desculpe, a página que você procura não existe ou foi movida.</p>
+    <p>Você será redirecionado automaticamente para a home em 4 segundos.</p>
+    <a href="https://www.bellatotti.com.br/">Voltar para a Home agora</a>
+    
     <script>
-        window.location.href = "https://www.bellatotti.com.br/";
+        setTimeout(() => {
+            window.location.href = "https://www.bellatotti.com.br/";
+        }, 4000);
     </script>
 </body>
 </html>
