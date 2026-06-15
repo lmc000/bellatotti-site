@@ -1,16 +1,8 @@
 User-agent: *
+
 Disallow: /*attributes=
 Disallow: /*?attributes=
-Disallow: /*_Cor-Principal_
-Disallow: /*_JM
 Disallow: /*OrderId=
-Disallow: /*payment*methods*
-Disallow: /MLB-*
-Disallow: /roupas/
-Disallow: /sapatos/
-Disallow: /HOME
-Disallow: /home
+Disallow: /*payment*
 
-# Permitir apenas a home
-Allow: /$
-Allow: /index.html
+Sitemap: https://www.bellatotti.com.br/sitemap.xml
