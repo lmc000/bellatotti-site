@@ -15,7 +15,7 @@ Este guia vai direto ao ponto para cada situação, trabalhando com as três alt
 
 1. **Como é o piso?** É o único fator que limita de verdade. Grama, areia e paralelepípedo eliminam o salto fino, por mais confortável que seja.
 2. **Quanto tempo em pé?** Ficar parada em pé cansa mais do que caminhar. Uma cerimônia de uma hora parada pesa mais do que três horas circulando.
-3. **O sapato tem plataforma e tira?** Um salto de 12 cm com plataforma de 3 cm tem a inclinação real de um de 9 cm. A construção muda tudo — se ainda não leu, veja o [guia sobre salto que não machuca](/guias/salto-alto-que-nao-machuca/).
+3. **O sapato tem plataforma e tira?** Um salto de 12 cm com plataforma de 5 cm deixa o pé a 7 cm de inclinação real — menos do que um salto raso de 8 cm. A construção muda tudo, e explicamos a conta no [guia sobre salto que não machuca](/guias/salto-alto-que-nao-machuca/).
 
 Respondidas estas três, a escolha praticamente se faz sozinha.
 

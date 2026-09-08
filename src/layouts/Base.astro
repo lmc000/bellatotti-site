@@ -118,7 +118,7 @@ const ehHome = Astro.url.pathname === '/';
     <a href="/#produtos">Coleção</a>
     <a href="/guias/">Guias</a>
     <a href={LOJAS.shopee} target="_blank" rel="noopener">Shopee</a>
-    <a href={LOJAS.mercadoLivre} target="_blank" rel="noopener">Mercado Livre</a>
+    <a href={LOJAS.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
   </nav>
   <p>&copy; {new Date().getFullYear()} Bellatotti &mdash; Todos os direitos reservados</p>
 </footer>
@@ -392,7 +392,7 @@ const ehHome = Astro.url.pathname === '/';
     color: var(--gold);
   }
 
-  .btn-ml, .btn-shopee {
+  .btn-direto, .btn-shopee {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,13 +406,13 @@ const ehHome = Astro.url.pathname === '/';
     transition: var(--transition);
   }
 
-  .btn-ml {
+  .btn-direto {
     background: var(--black);
     color: var(--gold);
     border: 1px solid var(--black);
   }
 
-  .btn-ml:hover {
+  .btn-direto:hover {
     background: transparent;
     color: var(--black);
   }

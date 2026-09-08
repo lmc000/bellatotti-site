@@ -27,18 +27,24 @@ Se o sapato tem plataforma na frente, ela levanta a ponta do pé junto com o cal
 
 > **Inclinação real = altura do salto − altura da plataforma frontal**
 
-Na prática:
+Na prática, com plataformas de 3 a 5 cm:
 
-| Salto | Plataforma | Inclinação real | O pé sente como |
-|---|---|---|---|
-| 8 cm | 0 cm | 8 cm | Salto de 8 cm |
-| 12 cm | 3 cm | 9 cm | Salto de 9 cm |
-| 14 cm | 4 cm | 10 cm | Salto de 10 cm |
-| 12 cm | 0 cm | 12 cm | Salto de 12 cm |
+| Salto | Plataforma | Inclinação real |
+|---|---|---|
+| 8 cm | 0 cm | 8 cm |
+| 12 cm | 3 a 5 cm | 7 a 9 cm |
+| 14 cm | 3 a 5 cm | 9 a 11 cm |
+| 12 cm | 0 cm | 12 cm |
 
-Repare na última linha comparada com a segunda. **O mesmo salto de 12 cm pode ser confortável ou insuportável dependendo apenas da plataforma.**
+Agora repare com atenção na primeira e na segunda linha.
 
-É por isso que comparar sapatos pela altura anunciada não faz sentido nenhum. Dois modelos de 12 cm podem ser experiências completamente diferentes.
+Um salto de 12 cm com plataforma de 5 cm dá ao pé uma inclinação real de **7 cm** — ou seja, **menos** do que um salto raso de 8 cm, que trabalha a 8 cm cheios.
+
+> Um salto de 12 cm bem construído pode ser mais confortável do que um de 8 cm sem plataforma.
+
+Parece contraintuitivo, mas é só aritmética. E é por isso que comparar sapatos pela altura anunciada não faz sentido nenhum: dois modelos de 12 cm, um com plataforma e outro sem, são experiências completamente diferentes.
+
+A última linha da tabela mostra o outro lado. O mesmo 12 cm, sem plataforma nenhuma, força o pé a 12 cm de inclinação — e aí sim, dói.
 
 ## Quanto tempo dá para usar cada altura
 
@@ -58,9 +64,11 @@ Sem plataforma e sem tira, reduza cada faixa para menos de metade. A construçã
 
 Esta é a regra mais útil que você vai levar deste guia: **quanto mais alto o salto, mais plataforma ele precisa ter**.
 
-Um salto de 8 cm dispensa plataforma. Um de 12 cm pede pelo menos 2 a 3 cm. Um de 14 cm precisa de 3 a 4 cm para ficar utilizável por várias horas.
+Um salto de 8 cm dispensa plataforma — a inclinação já é moderada. A partir dos 12 cm, a plataforma deixa de ser opcional: são necessários 3 a 5 cm para trazer a inclinação real de volta à faixa confortável.
 
-Quando a proporção está certa, a altura visual continua toda lá — o efeito de perna alongada é o mesmo — mas o pé trabalha num ângulo muito mais suave.
+Quando a proporção está certa, a altura visual continua toda lá — o efeito de perna alongada é exatamente o mesmo — mas o pé trabalha num ângulo muito mais suave.
+
+Ao olhar um sapato alto, verifique sempre a espessura da sola na ponta. É esse número, e não o do salto, que vai determinar como você se sente às onze da noite.
 
 ### 2. Tira no tornozelo
 

@@ -95,13 +95,13 @@ const breadcrumb = {
         Envio rápido para todo o Brasil.
       </p>
       <div class="cta-botoes">
-        <a class="btn-ml" href={LOJAS.mercadoLivre} target="_blank" rel="noopener">
-          <i class="fas fa-shopping-cart" style="font-size:12px;"></i>
-          Mercado Livre
-        </a>
-        <a class="btn-shopee" href={LOJAS.shopee} target="_blank" rel="noopener">
+        <a class="btn-cta-principal" href={LOJAS.shopee} target="_blank" rel="noopener">
           <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
-          Shopee
+          Ver na Shopee
+        </a>
+        <a class="btn-cta-zap" href={LOJAS.whatsapp} target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp" style="font-size:13px;"></i>
+          Falar no WhatsApp
         </a>
       </div>
     </aside>
@@ -332,28 +332,40 @@ const breadcrumb = {
     flex-wrap: wrap;
   }
 
-  .cta-botoes .btn-ml {
+  .btn-cta-principal, .btn-cta-zap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: var(--transition);
+  }
+
+  .btn-cta-principal {
     background: var(--gold);
     color: var(--black);
     border-color: var(--gold);
-    padding: 14px 28px;
   }
 
-  .cta-botoes .btn-ml:hover {
+  .btn-cta-principal:hover {
     background: transparent;
     color: var(--gold);
   }
 
-  .cta-botoes .btn-shopee {
-    padding: 14px 28px;
+  .btn-cta-zap {
     background: transparent;
-    color: #ff6b4a;
-    border-color: #ff6b4a;
+    color: #25d366;
+    border-color: #25d366;
   }
 
-  .cta-botoes .btn-shopee:hover {
-    background: #ee4d2d;
-    border-color: #ee4d2d;
+  .btn-cta-zap:hover {
+    background: #25d366;
     color: #fff;
   }
 

@@ -3,16 +3,22 @@ export const SITE = {
   url: 'https://www.bellatotti.com.br',
   titulo: 'Bellatotti | Saltos Femininos Premium',
   descricao:
-    'Saltos femininos premium com design sofisticado, conforto real e acabamento de luxo. Compre pelo Mercado Livre ou Shopee com envio rápido para todo o Brasil.',
+    'Saltos femininos premium de 8, 12 e 14 cm com plataforma frontal para conforto real. Design sofisticado e acabamento de luxo, com envio rápido para todo o Brasil.',
   ogImage: '/meganero.jpg',
   ga: 'G-9DX6FF0E8E',
 } as const;
 
 export const LOJAS = {
-  mercadoLivre: 'https://www.google.com/search?q=bellatotti+mercado+livre',
   shopee: 'https://br.shp.ee/n8JqtwvK',
   whatsapp:
     'https://wa.me/5562985337195?text=Oi%2C+vim+do+site+e+quero+comprar+um+salto+Bellatotti',
+} as const;
+
+// Altura da plataforma frontal por altura de salto.
+// A inclinação real que o pé sente = salto − plataforma.
+export const ALTURAS = {
+  plataformaMin: 3,
+  plataformaMax: 5,
 } as const;
 
 export const SOCIAL = {
