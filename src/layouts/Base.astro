@@ -1,0 +1,552 @@
+---
+import { SITE, LOJAS } from '../consts';
+
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  imagem?: string;
+  tipo?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  titulo = SITE.titulo,
+  descricao = SITE.descricao,
+  imagem = SITE.ogImage,
+  tipo = 'website',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const imagemAbs = new URL(imagem, Astro.site).href;
+const ehHome = Astro.url.pathname === '/';
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga}`}></script>
+  <script is:inline define:vars={{ gaId: SITE.ga }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', gaId);
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="B1e0rEIly5iOa5zAFegTboGYztnoWVhc1QWjtZXbP-A">
+
+  <title>{titulo}</title>
+  <meta name="description" content={descricao}>
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'}>
+  <link rel="canonical" href={canonical}>
+
+  <meta property="og:type" content={tipo}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:title" content={titulo}>
+  <meta property="og:description" content={descricao}>
+  <meta property="og:image" content={imagemAbs}>
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content={SITE.nome}>
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={titulo}>
+  <meta name="twitter:description" content={descricao}>
+  <meta name="twitter:image" content={imagemAbs}>
+
+  {ehHome && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Bellatotti',
+      url: 'https://www.bellatotti.com.br',
+      description: 'Saltos femininos premium com elegância e conforto',
+      logo: 'https://www.bellatotti.com.br/lissafiore.jpg',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+55-62-98533-7195',
+        contactType: 'customer service',
+      },
+      sameAs: [
+        'https://www.instagram.com/bellatotti.br/',
+        'https://www.tiktok.com/@bellatotti.br',
+        'https://www.facebook.com/bellatotti.oficial',
+      ],
+    })} />
+  )}
+
+  <slot name="head" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class={ehHome ? '' : 'tema-claro'}>
+
+<header id="header" class:list={['site-header', { solido: !ehHome }]}>
+  <a href="/" class="logo">BELLA<span>TOTTI</span></a>
+  <nav>
+    <a href="/#produtos">Coleção</a>
+    <a href="/guias/">Guias</a>
+    <a href="/#beneficios">A Marca</a>
+    <a href="/#social">Seguir</a>
+    <a href={LOJAS.whatsapp} target="_blank" rel="noopener" class="nav-cta">Falar Conosco</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fechar menu">&times;</button>
+  <a href="/#produtos">Coleção</a>
+  <a href="/guias/">Guias</a>
+  <a href="/#beneficios">A Marca</a>
+  <a href="/#social">Seguir</a>
+  <a href={LOJAS.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<slot />
+
+<footer>
+  <a href="/" class="footer-logo">BELLA<span>TOTTI</span></a>
+  <div class="footer-line"></div>
+  <nav class="footer-nav">
+    <a href="/#produtos">Coleção</a>
+    <a href="/guias/">Guias</a>
+    <a href={LOJAS.shopee} target="_blank" rel="noopener">Shopee</a>
+    <a href={LOJAS.mercadoLivre} target="_blank" rel="noopener">Mercado Livre</a>
+  </nav>
+  <p>&copy; {new Date().getFullYear()} Bellatotti &mdash; Todos os direitos reservados</p>
+</footer>
+
+<a class="whatsapp-float" href={LOJAS.whatsapp} target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp"></i>
+  <span class="whatsapp-text">Falar no WhatsApp</span>
+</a>
+
+<script is:inline>
+  (function () {
+    var header = document.getElementById('header');
+    if (header && !header.classList.contains('solido')) {
+      var onScroll = function () {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    var nav = document.getElementById('mobileNav');
+    var abrir = document.getElementById('menuToggle');
+    var fechar = document.getElementById('mobileNavClose');
+    if (abrir && nav) {
+      abrir.addEventListener('click', function () {
+        nav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+    if (fechar && nav) {
+      fechar.addEventListener('click', function () {
+        nav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+    if (nav) {
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --gold-dark: #9a7a4a;
+    --black: #0d0d0d;
+    --off-white: #f8f5f0;
+    --cream: #ede8df;
+    --text-muted: #888;
+    --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+  }
+
+  .site-header.scrolled,
+  .site-header.solido {
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 14px 40px;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 26px;
+    letter-spacing: 6px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .site-header nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .site-header nav a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+
+  .site-header nav a:hover { color: var(--gold); }
+
+  .nav-cta {
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    color: var(--gold) !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--black) !important;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: #fff;
+    transition: var(--transition);
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--black);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .mobile-nav a:hover { color: var(--gold); }
+  .mobile-nav-close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4vw, 52px);
+    color: var(--black);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-dark);
+  }
+
+  .divider-gold {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 20px auto 0;
+  }
+
+  /* ─── BOTÕES ─── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--gold);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 1px solid var(--gold);
+  }
+
+  .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .btn-ml, .btn-shopee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .btn-ml {
+    background: var(--black);
+    color: var(--gold);
+    border: 1px solid var(--black);
+  }
+
+  .btn-ml:hover {
+    background: transparent;
+    color: var(--black);
+  }
+
+  .btn-shopee {
+    background: transparent;
+    color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+  }
+
+  .btn-shopee:hover {
+    background: #ee4d2d;
+    color: #fff;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.4);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  footer .footer-logo span { color: var(--gold); }
+
+  .footer-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-dark);
+    margin: 16px auto;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .footer-nav a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: var(--transition);
+  }
+
+  .footer-nav a:hover { color: var(--gold); }
+
+  footer p { font-size: 12px; letter-spacing: 2px; }
+
+  /* ─── WHATSAPP ─── */
+  .whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 22px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    transition: var(--transition);
+    max-width: 220px;
+  }
+
+  .whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(37,211,102,0.5);
+  }
+
+  .whatsapp-float i { font-size: 20px; flex-shrink: 0; }
+  .whatsapp-text { white-space: nowrap; }
+
+  /* ─── ANIMAÇÕES ─── */
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .site-header { padding: 16px 20px; }
+    .site-header.scrolled, .site-header.solido { padding: 12px 20px; }
+    .site-header nav { display: none; }
+    .menu-toggle { display: flex; }
+    footer { padding: 40px 20px; }
+    .footer-nav { gap: 18px; }
+    .whatsapp-float { right: 16px; bottom: 16px; padding: 12px 18px; }
+    .whatsapp-text { display: none; }
+  }
+</style>

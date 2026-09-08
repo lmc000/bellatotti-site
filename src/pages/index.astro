@@ -1,0 +1,668 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { LOJAS, SOCIAL } from '../consts';
+
+const guias = (await getCollection('guias'))
+  .sort((a, b) => b.data.data.valueOf() - a.data.data.valueOf())
+  .slice(0, 3);
+
+const produtos = [
+  {
+    nome: 'Salto Alto Premium',
+    desc: 'Design arrojado com acabamento de alto padrão',
+    img: '/meganero.jpg',
+    alt: 'Sandália Salto Alto Premium Bellatotti Mega Nero',
+    etiqueta: 'Destaque',
+  },
+  {
+    nome: 'Salto Médio Luxo',
+    desc: 'Elegância e conforto para o dia a dia',
+    img: '/estrella.jpg',
+    alt: 'Sandália Salto Médio Rose Bellatotti Estrella',
+    etiqueta: 'Novo',
+  },
+];
+
+const ticker = [
+  'Frete Grátis',
+  '+5.000 Clientes',
+  'Troca Fácil',
+  'Qualidade Premium',
+  'Envio Rápido',
+  'Bellatotti Shoes',
+];
+
+const beneficios = [
+  { icone: 'fa-truck-fast', titulo: 'Envio Rápido', desc: 'Entregamos em todo o Brasil com agilidade e segurança' },
+  { icone: 'fa-star', titulo: '+5.000 Clientes', desc: 'Milhares de mulheres apaixonadas pela marca' },
+  { icone: 'fa-gem', titulo: 'Conforto Real', desc: 'Saltos pensados para você usar o dia todo sem dor' },
+  { icone: 'fa-rotate-left', titulo: 'Troca Fácil', desc: 'Processo simples e sem burocracia para trocas' },
+];
+---
+
+<Base>
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Nova Coleção 2026</span>
+      <h1>O salto que<br><em>transforma</em><br>o seu look</h1>
+      <p>Elegância refinada, conforto real e design exclusivo para você se destacar em qualquer ocasião.</p>
+      <div class="hero-actions">
+        <a href="#produtos" class="btn-primary">
+          Ver Coleção
+          <i class="fas fa-arrow-right" style="font-size:12px;"></i>
+        </a>
+        <a href={LOJAS.whatsapp} target="_blank" rel="noopener" class="btn-secondary">
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      {[...ticker, ...ticker].map((t) => (
+        <>
+          <span>{t}</span><span class="accent">&#10022;</span>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <section class="products-section" id="produtos">
+    <div class="section-header reveal">
+      <span class="section-tag">Destaques da Coleção</span>
+      <h2 class="section-title">Escolhidos para <em>você</em></h2>
+      <div class="divider-gold"></div>
+    </div>
+
+    <div class="stock-badge reveal">Estoque limitado</div>
+
+    <div class="products-grid">
+      {produtos.map((p, i) => (
+        <article class="product-card reveal" style={i > 0 ? `transition-delay:${i * 0.15}s` : undefined}>
+          <div class="product-img-wrap">
+            <span class="product-label">{p.etiqueta}</span>
+            <img src={p.img} alt={p.alt} loading="lazy" width="800" height="1000">
+          </div>
+          <div class="product-content">
+            <h3 class="product-name">{p.nome}</h3>
+            <p class="product-desc">{p.desc}</p>
+            <div class="product-btns">
+              <a class="btn-ml" href={LOJAS.mercadoLivre} target="_blank" rel="noopener">
+                <i class="fas fa-shopping-cart" style="font-size:12px;"></i>
+                Mercado Livre
+              </a>
+              <a class="btn-shopee" href={LOJAS.shopee} target="_blank" rel="noopener">
+                <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
+                Shopee
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <div class="brand-strip">
+    <blockquote>&ldquo;Cada detalhe foi pensado para que você se sinta extraordinária.&rdquo;</blockquote>
+    <cite>&mdash; Bellatotti, 2026</cite>
+  </div>
+
+  <section class="benefits-section" id="beneficios">
+    <div class="section-header reveal">
+      <span class="section-tag">Por que Bellatotti</span>
+      <h2 class="section-title">A diferença que se <em>sente</em></h2>
+      <div class="divider-gold"></div>
+    </div>
+    <div class="benefits-grid">
+      {beneficios.map((b, i) => (
+        <div class="benefit-item reveal" style={i > 0 ? `transition-delay:${i * 0.1}s` : undefined}>
+          <div class="benefit-icon"><i class={`fas ${b.icone}`}></i></div>
+          <div class="benefit-title">{b.titulo}</div>
+          <p class="benefit-desc">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {guias.length > 0 && (
+    <section class="guias-section" id="guias">
+      <div class="section-header reveal">
+        <span class="section-tag">Guias Bellatotti</span>
+        <h2 class="section-title">Aprenda a escolher o <em>salto certo</em></h2>
+        <div class="divider-gold"></div>
+      </div>
+      <div class="guias-grid">
+        {guias.map((g, i) => (
+          <a href={`/guias/${g.id}/`} class="guia-card reveal" style={i > 0 ? `transition-delay:${i * 0.1}s` : undefined}>
+            <span class="guia-tag">{g.data.categoria}</span>
+            <h3 class="guia-titulo">{g.data.titulo}</h3>
+            <p class="guia-desc">{g.data.descricao}</p>
+            <span class="guia-link">Ler guia <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
+      <div class="guias-cta reveal">
+        <a href="/guias/" class="btn-primary">Ver todos os guias</a>
+      </div>
+    </section>
+  )}
+
+  <section class="social-section" id="social">
+    <div class="section-header reveal">
+      <span class="section-tag">Comunidade</span>
+      <h2 class="section-title">Siga a <em>marca</em></h2>
+      <div class="divider-gold"></div>
+    </div>
+    <p class="social-intro reveal">
+      Acompanhe as novidades, looks e lançamentos exclusivos nas nossas redes.
+    </p>
+    <div class="social-links reveal">
+      <a href={SOCIAL.instagram} target="_blank" rel="noopener" class="social-link">
+        <i class="fab fa-instagram"></i>Instagram
+      </a>
+      <a href={SOCIAL.tiktok} target="_blank" rel="noopener" class="social-link">
+        <i class="fab fa-tiktok"></i>TikTok
+      </a>
+      <a href={SOCIAL.facebook} target="_blank" rel="noopener" class="social-link">
+        <i class="fab fa-facebook-f"></i>Facebook
+      </a>
+    </div>
+  </section>
+</Base>
+
+<script is:inline>
+  (function () {
+    var heroBg = document.getElementById('heroBg');
+    if (!heroBg) return;
+    heroBg.classList.add('loaded');
+    window.addEventListener('scroll', function () {
+      heroBg.style.transform = 'translateY(' + window.scrollY * 0.3 + 'px) scale(1)';
+    }, { passive: true });
+  })();
+</script>
+
+<style>
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100svh;
+    min-height: 600px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('/lissafiore.jpg') center 30% / cover no-repeat;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+
+  .hero-bg.loaded { transform: scale(1); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.85) 0%,
+      rgba(0,0,0,0.4) 40%,
+      rgba(0,0,0,0.15) 70%,
+      rgba(0,0,0,0.1) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 60px;
+    max-width: 800px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s 0.3s forwards;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 1.08;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    max-width: 440px;
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    right: 60px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    animation: scrollLine 2s infinite;
+  }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    background: var(--black);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+
+  .ticker-inner {
+    display: flex;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-inner span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    padding: 0 48px;
+  }
+
+  .ticker-inner span.accent { color: var(--gold); }
+
+  /* ─── PRODUTOS ─── */
+  .products-section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .stock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff0f0;
+    color: #c0392b;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    margin-bottom: 48px;
+    font-weight: 500;
+  }
+
+  .stock-badge::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #e74c3c;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+  }
+
+  .product-card {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  }
+
+  .product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: var(--cream);
+  }
+
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s var(--transition);
+  }
+
+  .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+
+  .product-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    font-weight: 600;
+  }
+
+  .product-content {
+    padding: 24px 20px 20px;
+    border-top: 1px solid var(--cream);
+  }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .product-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .product-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* ─── BRAND STRIP ─── */
+  .brand-strip {
+    background: var(--black);
+    padding: 64px 40px;
+    text-align: center;
+  }
+
+  .brand-strip blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 3.5vw, 40px);
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    max-width: 720px;
+    margin: 0 auto 16px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+
+  .brand-strip cite {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ─── BENEFÍCIOS ─── */
+  .benefits-section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--cream);
+    border: 1px solid var(--cream);
+    overflow: hidden;
+  }
+
+  .benefit-item {
+    background: #fff;
+    padding: 48px 32px;
+    text-align: center;
+    transition: var(--transition);
+  }
+
+  .benefit-item:hover { background: var(--black); }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 20px;
+    border: 1px solid var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--gold);
+    transition: var(--transition);
+  }
+
+  .benefit-item:hover .benefit-icon {
+    border-color: var(--gold-dark);
+    background: rgba(201,169,110,0.1);
+  }
+
+  .benefit-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+    transition: var(--transition);
+  }
+
+  .benefit-item:hover .benefit-title { color: var(--gold); }
+
+  .benefit-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+    transition: var(--transition);
+  }
+
+  .benefit-item:hover .benefit-desc { color: rgba(255,255,255,0.5); }
+
+  /* ─── GUIAS ─── */
+  .guias-section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .guias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .guia-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--cream);
+    padding: 32px 28px;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .guia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+    border-color: var(--gold);
+  }
+
+  .guia-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .guia-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .guia-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .guia-link {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guia-card:hover .guia-link { color: var(--gold-dark); }
+  .guia-link i { font-size: 11px; }
+
+  .guias-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* ─── SOCIAL ─── */
+  .social-section {
+    padding: 80px 40px;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .social-intro {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 360px;
+    margin: 0 auto;
+    letter-spacing: 0.3px;
+    line-height: 1.8;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 1px solid rgba(13,13,13,0.15);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: #fff;
+    transition: var(--transition);
+  }
+
+  .social-link:hover {
+    background: var(--black);
+    color: var(--gold);
+    border-color: var(--black);
+  }
+
+  .social-link i { font-size: 16px; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero-content { padding: 0 24px; }
+    .hero h1 { font-size: 36px; }
+    .hero-scroll { right: 24px; }
+    .products-section { padding: 64px 20px; }
+    .products-grid { grid-template-columns: 1fr; gap: 24px; }
+    .benefits-section { padding: 64px 20px; }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefit-item { padding: 32px 20px; }
+    .guias-section { padding: 64px 20px; }
+    .brand-strip { padding: 48px 24px; }
+    .social-section { padding: 64px 24px; }
+    .social-links { flex-direction: column; align-items: center; }
+    .social-link { width: 100%; max-width: 280px; justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+    .product-btns { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+  }
+</style>

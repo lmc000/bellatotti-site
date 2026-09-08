@@ -1,0 +1,168 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const guias = (await getCollection('guias')).sort(
+  (a, b) => b.data.data.valueOf() - a.data.data.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<Base
+  titulo="Guias Bellatotti | Como Escolher o Salto Certo"
+  descricao="Guias práticos sobre saltos femininos: como escolher salto confortável, qual altura usar em cada ocasião, numeração, cuidados e muito mais."
+>
+  <section class="pagina-topo">
+    <div class="section-header">
+      <span class="section-tag">Guias Bellatotti</span>
+      <h1 class="section-title">Aprenda a escolher o <em>salto certo</em></h1>
+      <div class="divider-gold"></div>
+    </div>
+    <p class="pagina-intro">
+      Tudo o que você precisa saber para escolher, usar e cuidar dos seus saltos &mdash;
+      sem dor e sem erro.
+    </p>
+  </section>
+
+  <section class="lista-guias">
+    {guias.length === 0 ? (
+      <p class="vazio">Em breve, novos guias por aqui.</p>
+    ) : (
+      <div class="guias-grid">
+        {guias.map((g) => (
+          <a href={`/guias/${g.id}/`} class="guia-card">
+            <span class="guia-tag">{g.data.categoria}</span>
+            <h2 class="guia-titulo">{g.data.titulo}</h2>
+            <p class="guia-desc">{g.data.descricao}</p>
+            <span class="guia-meta">
+              <time datetime={g.data.data.toISOString()}>{fmt(g.data.data)}</time>
+              <span class="guia-link">Ler guia <i class="fas fa-arrow-right"></i></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .pagina-topo {
+    padding: 160px 40px 0;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pagina-topo .section-header { margin-bottom: 24px; }
+
+  .pagina-intro {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .lista-guias {
+    padding: 64px 40px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .guias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .guia-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--cream);
+    padding: 32px 28px;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .guia-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+    border-color: var(--gold);
+  }
+
+  .guia-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .guia-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .guia-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    flex: 1;
+  }
+
+  .guia-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid var(--cream);
+  }
+
+  .guia-meta time {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .guia-link {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--black);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .guia-card:hover .guia-link { color: var(--gold-dark); }
+  .guia-link i { font-size: 11px; }
+
+  .vazio {
+    text-align: center;
+    color: var(--text-muted);
+    font-weight: 300;
+    padding: 40px 0;
+  }
+
+  @media (max-width: 768px) {
+    .pagina-topo { padding: 120px 20px 0; }
+    .lista-guias { padding: 48px 20px 72px; }
+    .guias-grid { grid-template-columns: 1fr; }
+  }
+</style>
