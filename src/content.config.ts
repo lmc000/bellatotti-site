@@ -13,4 +13,21 @@ const guias = defineCollection({
   }),
 });
 
-export const collections = { guias };
+const produtos = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/produtos' }),
+  schema: z.object({
+    nome: z.string(),
+    descricao: z.string(),
+    // Medidas em cm. A inclinação real (altura − plataforma) é calculada.
+    altura: z.number(),
+    plataforma: z.number().default(0),
+    imagem: z.string(),
+    alt: z.string(),
+    shopee: z.string().url(),
+    etiqueta: z.string().optional(),
+    numeracao: z.string().optional(),
+    ordem: z.number().default(99),
+  }),
+});
+
+export const collections = { guias, produtos };
