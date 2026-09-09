@@ -17,7 +17,6 @@ const zapModelo = (nome: string) =>
   )}`;
 
 const ticker = [
-  'Frete Grátis',
   '+5.000 Clientes',
   'Troca Fácil',
   'Qualidade Premium',
@@ -55,8 +54,10 @@ const beneficios = [
   </section>
 
   <div class="ticker">
+    {/* 4 cópias emparelhadas com o translateX(-25%) do @keyframes ticker:
+        o loop só é contínuo enquanto (cópias − 1) × largura do conjunto ≥ ecrã. */}
     <div class="ticker-inner">
-      {[...ticker, ...ticker].map((t) => (
+      {Array.from({ length: 4 }).flatMap(() => ticker).map((t) => (
         <>
           <span>{t}</span><span class="accent">&#10022;</span>
         </>
