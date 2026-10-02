@@ -392,7 +392,7 @@ const ehHome = Astro.url.pathname === '/';
     color: var(--gold);
   }
 
-  .btn-direto, .btn-shopee {
+  .btn-direto, .btn-shopee, .btn-ml {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -426,6 +426,21 @@ const ehHome = Astro.url.pathname === '/';
   .btn-shopee:hover {
     background: #ee4d2d;
     color: #fff;
+  }
+
+  .btn-ml {
+    background: transparent;
+    color: #6b6b6b;
+    border: 1px solid rgba(13,13,13,0.2);
+    /* rótulo mais longo dos três: aperta o tracking para caber numa linha */
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .btn-ml:hover {
+    background: var(--black);
+    color: var(--gold);
+    border-color: var(--black);
   }
 
   /* ─── FOOTER ─── */

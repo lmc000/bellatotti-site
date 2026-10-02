@@ -77,37 +77,48 @@ const beneficios = [
     <div class="products-grid">
       {produtos.map((p, i) => {
         const d = p.data;
-        const inclinacao = d.altura - d.plataforma;
+        const temMedidas = d.altura !== null;
+        const plataforma = d.plataforma ?? 0;
         return (
-          <article class="product-card reveal" style={i > 0 ? `transition-delay:${i * 0.15}s` : undefined}>
+          <article class="product-card reveal" style={i > 0 ? `transition-delay:${(i % 3) * 0.15}s` : undefined}>
             <div class="product-img-wrap">
               {d.etiqueta && <span class="product-label">{d.etiqueta}</span>}
-              <img src={d.imagem} alt={d.alt} loading="lazy" width="1080" height="1440">
+              <img src={d.imagem} alt={d.alt} loading="lazy" width="896" height="1152">
             </div>
             <div class="product-content">
               <h3 class="product-name">{d.nome}</h3>
-              <p class="product-desc">{d.descricao}</p>
+              {d.descricao && <p class="product-desc">{d.descricao}</p>}
 
-              <dl class="product-specs">
-                <div>
-                  <dt>Salto</dt>
-                  <dd>{d.altura} cm</dd>
-                </div>
-                <div>
-                  <dt>Plataforma</dt>
-                  <dd>{d.plataforma > 0 ? `${d.plataforma} cm` : '—'}</dd>
-                </div>
-                <div class="spec-destaque">
-                  <dt>Inclinação real</dt>
-                  <dd>{inclinacao} cm</dd>
-                </div>
-              </dl>
+              {temMedidas && (
+                <dl class="product-specs">
+                  <div>
+                    <dt>Salto</dt>
+                    <dd>{d.altura} cm</dd>
+                  </div>
+                  <div>
+                    <dt>Plataforma</dt>
+                    <dd>{plataforma > 0 ? `${plataforma} cm` : '—'}</dd>
+                  </div>
+                  <div class="spec-destaque">
+                    <dt>Inclinação real</dt>
+                    <dd>{d.altura - plataforma} cm</dd>
+                  </div>
+                </dl>
+              )}
 
               <div class="product-btns">
-                <a class="btn-shopee" href={d.shopee} target="_blank" rel="noopener">
-                  <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
-                  Shopee
-                </a>
+                {d.shopee && (
+                  <a class="btn-shopee" href={d.shopee} target="_blank" rel="noopener">
+                    <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
+                    Shopee
+                  </a>
+                )}
+                {d.mercadolivre && (
+                  <a class="btn-ml" href={d.mercadolivre} target="_blank" rel="noopener">
+                    <i class="fas fa-shopping-cart" style="font-size:12px;"></i>
+                    Mercado Livre
+                  </a>
+                )}
                 <a class="btn-direto" href={zapModelo(d.nome)} target="_blank" rel="noopener">
                   <i class="fab fa-whatsapp" style="font-size:13px;"></i>
                   WhatsApp
@@ -506,11 +517,16 @@ const beneficios = [
 
   .specs-nota a:hover { color: var(--gold-dark); }
 
+  /* Marketplaces repartem a linha e crescem para a largura toda quando só há um;
+     o WhatsApp fica sempre numa linha própria por baixo. */
   .product-btns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
   }
+
+  .product-btns > a { flex: 1 1 130px; }
+  .product-btns .btn-direto { flex-basis: 100%; }
 
   /* ─── BRAND STRIP ─── */
   .brand-strip {

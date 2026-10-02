@@ -17,13 +17,15 @@ const produtos = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/produtos' }),
   schema: z.object({
     nome: z.string(),
-    descricao: z.string(),
-    // Medidas em cm. A inclinação real (altura − plataforma) é calculada.
-    altura: z.number(),
-    plataforma: z.number().default(0),
+    descricao: z.string().default(''),
+    // Medidas em cm; a inclinação real (altura − plataforma) é calculada.
+    // Ficam nulas até serem confirmadas: a tira de medidas só aparece com altura.
+    altura: z.number().nullable().default(null),
+    plataforma: z.number().nullable().default(null),
     imagem: z.string(),
     alt: z.string(),
-    shopee: z.string().url(),
+    shopee: z.string().url().optional(),
+    mercadolivre: z.string().url().optional(),
     etiqueta: z.string().optional(),
     numeracao: z.string().optional(),
     ordem: z.number().default(99),
