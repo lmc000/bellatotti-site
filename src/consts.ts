@@ -9,7 +9,7 @@ export const SITE = {
 } as const;
 
 export const LOJAS = {
-  shopee: 'https://br.shp.ee/n8JqtwvK',
+  shopee: 'https://shopee.com.br/bellatottishoes',
   whatsapp:
     'https://wa.me/5562985337195?text=Oi%2C+vim+do+site+e+quero+comprar+um+salto+Bellatotti',
 } as const;
