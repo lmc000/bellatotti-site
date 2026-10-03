@@ -1,9 +1,8 @@
 ---
 nome: "Ragazza Rosso"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 14
+plataforma: 5
 imagem: "/produtos/ragazza-rosso.webp"
 alt: "Sandália Salto Alto Mega Pata Bellatotti Ragazza Rosso"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Mega-Pata-Bellatotti-Ragazza-Rosso-i.285972369.20701787532"

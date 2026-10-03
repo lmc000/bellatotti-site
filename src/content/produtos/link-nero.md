@@ -1,9 +1,8 @@
 ---
 nome: "Link Nero"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 11.5
+plataforma: 2
 imagem: "/produtos/link-nero.webp"
 alt: "Scarpin Salto Alto Meia Pata Bellatotti Link Nero"
 shopee: "https://shopee.com.br/Scarpin-Salto-Alto-Meia-Pata-Bellatotti-Link-Nero-i.285972369.7942583457"

@@ -1,9 +1,8 @@
 ---
 nome: "Sestri"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/sestri.webp"
 alt: "Sandália Rosa Salto Grosso Bellatotti Sestri"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Rosa-Salto-Grosso-Bellatotti-Sestri-i.285972369.20640711936"

@@ -1,9 +1,8 @@
 ---
 nome: "Celeste"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/celeste.webp"
 alt: "Sandália Prata Salto Bellatotti Celeste"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Preta-Salto-Grosso-Bellatotti-Celeste-nero-i.285972369.43102445160"

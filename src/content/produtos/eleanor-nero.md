@@ -1,9 +1,8 @@
 ---
 nome: "Eleanor Nero"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/eleanor-nero.webp"
 alt: "Sandália Preta Salto Bellatotti Eleanor Nero"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Preta-Salto-Bellatotti-Eleanor-Nero-i.285972369.18199097528"

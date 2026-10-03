@@ -1,9 +1,8 @@
 ---
 nome: "Tiziana Di Strass"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/tiziana-di-strass.webp"
 alt: "Sandália Branca Salto Grosso Bellatotti Tiziana Di Strass"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Branca-Salto-Grosso-Bellatotti-Tiziana-di-Strass-i.285972369.19968676276"

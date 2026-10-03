@@ -1,9 +1,8 @@
 ---
 nome: "Lale Bianca"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 12
+plataforma: 3
 imagem: "/produtos/lale-bianca.webp"
 alt: "Sandália Branca Salto Alto Bellatotti Lale Bianca Feminina"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Branca-Salto-Alto-Bellatotti-Lale-Bianca-i.285972369.55501640780"

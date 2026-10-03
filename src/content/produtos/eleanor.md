@@ -1,9 +1,8 @@
 ---
 nome: "Eleanor"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/eleanor.webp"
 alt: "Sandália Dourada Salto Bellatotti Eleanor"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Dourada-Salto-Bellatotti-Eleanor-i.285972369.22397176220"

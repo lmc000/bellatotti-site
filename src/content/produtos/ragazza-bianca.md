@@ -1,7 +1,7 @@
 ---
 nome: "Ragazza Bianca"
-descricao: "Branco com tiras cruzadas douradas sobre meia pata de 5 cm. O salto mais alto da coleção, com a inclinação suavizada pela base."
-altura: 15
+descricao: "Branco com tiras cruzadas douradas sobre mega pata de 5 cm. A plataforma mais generosa da coleção suaviza a inclinação."
+altura: 14
 plataforma: 5
 imagem: "/produtos/ragazza-bianca.jpg"
 alt: "Sandália de salto alto branca Bellatotti Ragazza Bianca, com tiras douradas cruzadas e meia pata"

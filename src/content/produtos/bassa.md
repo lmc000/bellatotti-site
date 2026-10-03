@@ -1,9 +1,8 @@
 ---
 nome: "Bassa"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/bassa.webp"
 alt: "Sandália Salto Médio Cunha Rosa Bellatotti Bassa"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-M%C3%A9dio-Cunha-Rosa-Bellatotti-Bassa-i.285972369.5544780741"

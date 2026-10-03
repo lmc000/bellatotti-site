@@ -1,9 +1,8 @@
 ---
 nome: "Amelia"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/amelia.webp"
 alt: "Sandália Salto Médio Dourada Bellatotti Amelia"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-M%C3%A9dio-Dourada-Bellatotti-Amelia-i.285972369.22092680003"

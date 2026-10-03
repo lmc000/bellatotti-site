@@ -1,9 +1,8 @@
 ---
 nome: "Lana Rosa"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 11.5
+plataforma: 3.5
 imagem: "/produtos/lana-rosa.webp"
 alt: "Sandália Salto Alto Meia Pata Bellatotti Lana Rosa"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Meia-Pata-Bellatotti-Lana-Rosa-i.285972369.23096552611"

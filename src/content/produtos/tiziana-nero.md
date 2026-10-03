@@ -1,9 +1,8 @@
 ---
 nome: "Tiziana Nero"
 descricao: ""
-# Confirmar na caixa do produto antes de preencher:
-altura: null
-plataforma: null
+altura: 8
+plataforma: 0
 imagem: "/produtos/tiziana-nero.webp"
 alt: "Sandália Preta Salto Grosso Bellatotti Tiziana Nero"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Preta-Salto-Grosso-Bellatotti-Tiziana-Nero-i.285972369.22593415099"
