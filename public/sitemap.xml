@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Índice estático no caminho antigo. O @astrojs/sitemap gera
+  sitemap-index.xml e sitemap-0.xml, mas /sitemap.xml é o que está
+  submetido no Search Console desde antes da migração para Astro.
+  Aponta para o mesmo sitemap-0.xml, por isso não sai do sítio.
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.bellatotti.com.br/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>
