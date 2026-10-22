@@ -68,10 +68,14 @@ const ehHome = Astro.url.pathname === '/';
         telephone: '+55-62-98533-7195',
         contactType: 'customer service',
       },
+      // Perfis e lojas oficiais da marca. As lojas de marketplace contam como
+      // sameAs: são páginas oficiais da mesma entidade noutro domínio.
       sameAs: [
         'https://www.instagram.com/bellatotti.br/',
         'https://www.tiktok.com/@bellatotti.br',
         'https://www.facebook.com/bellatotti.oficial',
+        LOJAS.shopee,
+        LOJAS.mercadolivre,
       ],
     })} />
   )}
