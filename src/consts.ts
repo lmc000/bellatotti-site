@@ -10,6 +10,7 @@ export const SITE = {
 
 export const LOJAS = {
   shopee: 'https://shopee.com.br/bellatottishoes',
+  mercadolivre: 'https://www.mercadolivre.com.br/loja/bellatotti',
   whatsapp:
     'https://wa.me/5562985337195?text=Oi%2C+vim+do+site+e+quero+comprar+um+salto+Bellatotti',
 } as const;

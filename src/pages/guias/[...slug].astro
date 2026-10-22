@@ -99,6 +99,10 @@ const breadcrumb = {
           <i class="fas fa-shopping-bag" style="font-size:12px;"></i>
           Ver na Shopee
         </a>
+        <a class="btn-cta-ml" href={LOJAS.mercadolivre} target="_blank" rel="noopener">
+          <i class="fas fa-store" style="font-size:12px;"></i>
+          Ver no Mercado Livre
+        </a>
         <a class="btn-cta-zap" href={LOJAS.whatsapp} target="_blank" rel="noopener">
           <i class="fab fa-whatsapp" style="font-size:13px;"></i>
           Falar no WhatsApp
@@ -332,7 +336,7 @@ const breadcrumb = {
     flex-wrap: wrap;
   }
 
-  .btn-cta-principal, .btn-cta-zap {
+  .btn-cta-principal, .btn-cta-zap, .btn-cta-ml {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -367,6 +371,21 @@ const breadcrumb = {
   .btn-cta-zap:hover {
     background: #25d366;
     color: #fff;
+  }
+
+  /* Mercado Livre: canal secundário. O bloco tem fundo escuro, daí o tom claro. */
+  .btn-cta-ml {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    border-color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
+  .btn-cta-ml:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--black);
+    border-color: rgba(255, 255, 255, 0.95);
   }
 
   /* ─── RELACIONADOS ─── */
