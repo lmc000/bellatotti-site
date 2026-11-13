@@ -23,6 +23,8 @@ const produtos = defineCollection({
     altura: z.number().nullable().default(null),
     plataforma: z.number().nullable().default(null),
     imagem: z.string(),
+    /** Fotos adicionais (fundo branco), escolhidas manualmente. */
+    galeria: z.array(z.string()).default([]),
     alt: z.string(),
     shopee: z.string().url().optional(),
     mercadolivre: z.string().url().optional(),

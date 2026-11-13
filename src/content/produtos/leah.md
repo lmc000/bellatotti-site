@@ -8,5 +8,10 @@ alt: "Sandália de salto médio Bellatotti Leah, com tiras metalizadas rosé e g
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-M%C3%A9dio-Bellatotti-Leah-i.285972369.23537077687"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-3433213370-sandalia-salto-medio-bellatotti-leah-_JM"
 etiqueta: "Versátil"
+galeria:
+  - "/produtos/leah-1.webp"
+  - "/produtos/leah-2.webp"
+  - "/produtos/leah-3.webp"
+  - "/produtos/leah-4.webp"
 ordem: 5
 ---

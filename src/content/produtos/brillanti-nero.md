@@ -8,5 +8,10 @@ alt: "Sandália de salto alto preta Bellatotti Brillanti Nero, com tiras cruzada
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Preta-Bellatotti-Brillanti-Nero-i.285972369.23398223448"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-3982081541-sandalia-salto-alto-preta-bellatotti-brillanti-nero-_JM"
 etiqueta: "Destaque"
+galeria:
+  - "/produtos/brillanti-nero-1.webp"
+  - "/produtos/brillanti-nero-2.webp"
+  - "/produtos/brillanti-nero-3.webp"
+  - "/produtos/brillanti-nero-4.webp"
 ordem: 1
 ---

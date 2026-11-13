@@ -7,5 +7,10 @@ imagem: "/produtos/ragazza-rosso.webp"
 alt: "Sandália Salto Alto Mega Pata Bellatotti Ragazza Rosso"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Mega-Pata-Bellatotti-Ragazza-Rosso-i.285972369.20701787532"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-2638999564-sandalia-salto-alto-mega-pata-bellatotti-ragazza-rosso-_JM"
+galeria:
+  - "/produtos/ragazza-rosso-1.webp"
+  - "/produtos/ragazza-rosso-2.webp"
+  - "/produtos/ragazza-rosso-3.webp"
+  - "/produtos/ragazza-rosso-4.webp"
 ordem: 19
 ---

@@ -8,5 +8,10 @@ alt: "Sandália de salto alto branca Bellatotti Ragazza Bianca, com tiras dourad
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Mega-Pata-Bellatotti-Ragazza-Bianca-i.285972369.15893823377"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-2843592184"
 etiqueta: "Mega Plataforma"
+galeria:
+  - "/produtos/ragazza-bianca-1.webp"
+  - "/produtos/ragazza-bianca-2.webp"
+  - "/produtos/ragazza-bianca-3.webp"
+  - "/produtos/ragazza-bianca-4.webp"
 ordem: 3
 ---

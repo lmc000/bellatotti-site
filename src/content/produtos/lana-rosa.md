@@ -8,5 +8,9 @@ alt: "Sandália Salto Alto Meia Pata Bellatotti Lana Rosa"
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Meia-Pata-Bellatotti-Lana-Rosa-i.285972369.23096552611"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-3813955014-sandalia-salto-alto-meia-pata-bellatotti-lana-rosa-_JM"
 etiqueta: "Meia Pata"
+galeria:
+  - "/produtos/lana-rosa-1.webp"
+  - "/produtos/lana-rosa-2.webp"
+  - "/produtos/lana-rosa-3.webp"
 ordem: 31
 ---

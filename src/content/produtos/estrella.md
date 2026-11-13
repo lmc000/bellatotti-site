@@ -8,5 +8,9 @@ alt: "Sandália rosé de salto médio Bellatotti Estrella, com faixas de strass 
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Ros%C3%A9-Salto-M%C3%A9dio-Bellatotti-Estrella-i.285972369.18463816465"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-2971865281-sandalia-rose-salto-medio-bellatotti-estrella-_JM"
 etiqueta: "Clássico"
+galeria:
+  - "/produtos/estrella-1.webp"
+  - "/produtos/estrella-2.webp"
+  - "/produtos/estrella-3.webp"
 ordem: 6
 ---

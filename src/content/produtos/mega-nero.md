@@ -8,5 +8,10 @@ alt: "Sandália preta de salto alto Bellatotti Mega Nero, em verniz com tira em 
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Preta-Salto-Alto-Meia-Pata-Bellatotti-Mega-Nero-i.285972369.7844465848"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-1140298121-sandalia-preta-salto-alto-meia-pata-bellatotti-mega-nero-_JM"
 etiqueta: "Meia Pata"
+galeria:
+  - "/produtos/mega-nero-1.webp"
+  - "/produtos/mega-nero-2.webp"
+  - "/produtos/mega-nero-3.webp"
+  - "/produtos/mega-nero-4.webp"
 ordem: 2
 ---

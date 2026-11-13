@@ -43,6 +43,9 @@ const maxReal = Math.max(...reais);
 /** pt-BR usa vírgula decimal */
 const br = (n: number) => String(+n.toFixed(1)).replace('.', ',');
 
+/** Foto principal primeiro, depois a galeria escolhida. */
+const fotos = [d.imagem, ...d.galeria.filter((g) => g !== d.imagem)];
+
 const urlAbs = new URL(`/produtos/${produto.id}/`, Astro.site).href;
 const imagemAbs = new URL(d.imagem, Astro.site).href;
 const titulo = `${d.nome} — ${d.alt}`;
@@ -57,7 +60,7 @@ const schema = {
   '@type': 'Product',
   name: d.nome,
   description: descricao,
-  image: imagemAbs,
+  image: fotos.map((f) => new URL(f, Astro.site).href),
   brand: { '@type': 'Brand', name: 'Bellatotti' },
   category: 'Calçados femininos > Sandálias de salto',
   ...(real !== null && {
@@ -105,9 +108,20 @@ const parecidos =
     </nav>
 
     <div class="produto-grid">
-      <figure class="produto-foto">
-        <img src={d.imagem} alt={d.alt} width="896" height="1152" loading="eager" />
-      </figure>
+      <div class="produto-fotos">
+        <figure class="produto-foto">
+          <img src={fotos[0]} alt={d.alt} width="896" height="1152" loading="eager" />
+        </figure>
+        {fotos.length > 1 && (
+          <div class="miniaturas" style={`--n:${fotos.length}`}>
+            {fotos.map((src, i) => (
+              <button type="button" class="mini" data-src={src} aria-label={`Ver foto ${i + 1}`}>
+                <img src={src} alt={`${d.alt} — foto ${i + 1}`} width="220" height="280" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div class="produto-info">
         {d.etiqueta && <span class="produto-etiqueta">{d.etiqueta}</span>}
@@ -205,6 +219,10 @@ const parecidos =
   .produto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 
   .produto-foto { margin: 0; background: #f4f1ec; }
+  .miniaturas { display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); gap: 8px; margin-top: 8px; }
+  .mini { padding: 0; border: 1px solid transparent; background: none; cursor: pointer; display: block; }
+  .mini[aria-current='true'] { border-color: var(--gold-dark); }
+  .mini img { width: 100%; height: auto; display: block; background: #f4f1ec; }
   .produto-foto img { width: 100%; height: auto; display: block; }
 
   .produto-etiqueta {
@@ -253,3 +271,22 @@ const parecidos =
     .parecidos-grid { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  // Miniaturas trocam a foto principal (sem framework; a pagina e estatica)
+  document.querySelectorAll('.produto-fotos').forEach((bloco) => {
+    const principal = bloco.querySelector('.produto-foto img');
+    const minis = bloco.querySelectorAll('.mini');
+    if (!principal || !minis.length) return;
+    const marcar = (alvo) =>
+      minis.forEach((m) => m.setAttribute('aria-current', String(m === alvo)));
+    marcar(minis[0]);
+    minis.forEach((m) =>
+      m.addEventListener('click', () => {
+        const src = m.getAttribute('data-src');
+        if (src) principal.setAttribute('src', src);
+        marcar(m);
+      })
+    );
+  });
+</script>

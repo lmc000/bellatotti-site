@@ -8,5 +8,10 @@ alt: "Sandália preta de salto alto Bellatotti Nodi Nero, em nobuck com amarraç
 shopee: "https://shopee.com.br/Sand%C3%A1lia-Salto-Alto-Meia-Pata-Bellatotti-Nodi-Nero-i.285972369.5542613568"
 mercadolivre: "https://produto.mercadolivre.com.br/MLB-1115091264-sandalia-salto-alto-meia-pata-bellatotti-nodi-nero-_JM"
 etiqueta: "Amarração"
+galeria:
+  - "/produtos/nodi-nero-1.webp"
+  - "/produtos/nodi-nero-2.webp"
+  - "/produtos/nodi-nero-3.webp"
+  - "/produtos/nodi-nero-4.webp"
 ordem: 4
 ---
