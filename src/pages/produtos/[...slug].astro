@@ -1,0 +1,255 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { LOJAS, SITE } from '../../consts';
+
+export async function getStaticPaths() {
+  const produtos = await getCollection('produtos');
+  return produtos.map((produto) => ({
+    params: { slug: produto.id },
+    props: { produto },
+  }));
+}
+
+type Props = { produto: CollectionEntry<'produtos'> };
+const { produto } = Astro.props;
+const d = produto.data;
+
+const todos = (await getCollection('produtos')).sort((a, b) => a.data.ordem - b.data.ordem);
+
+const altura = d.altura ?? null;
+const plataforma = d.plataforma ?? 0;
+const real = altura !== null ? +(altura - plataforma).toFixed(1) : null;
+
+/** Tipo de construção, lido do texto alternativo da foto (não inventado). */
+const tipo = (() => {
+  const a = d.alt.toLowerCase();
+  if (a.includes('mega pata')) return 'mega pata';
+  if (a.includes('meia pata')) return 'meia pata';
+  if (a.includes('anabela') || a.includes('cunha')) return 'anabela';
+  if (a.includes('salto fino') || a.includes('scarpin')) return 'salto fino';
+  if (a.includes('salto grosso') || a.includes('salto bloco')) return 'salto grosso';
+  if (a.includes('plataforma')) return 'plataforma';
+  return null;
+})();
+
+/** Onde este modelo cai dentro da coleção, em inclinação real. */
+const reais = todos
+  .map((p) => (p.data.altura === null ? null : p.data.altura - (p.data.plataforma ?? 0)))
+  .filter((n): n is number => n !== null);
+const minReal = Math.min(...reais);
+const maxReal = Math.max(...reais);
+
+/** pt-BR usa vírgula decimal */
+const br = (n: number) => String(+n.toFixed(1)).replace('.', ',');
+
+const urlAbs = new URL(`/produtos/${produto.id}/`, Astro.site).href;
+const imagemAbs = new URL(d.imagem, Astro.site).href;
+const titulo = `${d.nome} — ${d.alt}`;
+
+const descricao =
+  real !== null
+    ? `${d.alt}. Salto de ${altura} cm com plataforma de ${plataforma} cm: inclinação real de ${br(real)} cm. Medidas conferidas, numeração e onde comprar.`
+    : `${d.alt}. Veja as medidas, a numeração e onde comprar.`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: d.nome,
+  description: descricao,
+  image: imagemAbs,
+  brand: { '@type': 'Brand', name: 'Bellatotti' },
+  category: 'Calçados femininos > Sandálias de salto',
+  ...(real !== null && {
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: 'Altura do salto', value: `${altura} cm` },
+      { '@type': 'PropertyValue', name: 'Altura da plataforma', value: `${plataforma} cm` },
+      { '@type': 'PropertyValue', name: 'Inclinação real', value: `${real} cm` },
+    ],
+  }),
+  url: urlAbs,
+};
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Início', item: SITE.url + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Coleção', item: SITE.url + '/#produtos' },
+    { '@type': 'ListItem', position: 3, name: d.nome, item: urlAbs },
+  ],
+};
+
+// Outros modelos com inclinação real parecida (±1 cm) — comparação útil, não aleatória
+const parecidos =
+  real === null
+    ? []
+    : todos
+        .filter((p) => {
+          if (p.id === produto.id || p.data.altura === null) return false;
+          const r = p.data.altura - (p.data.plataforma ?? 0);
+          return Math.abs(r - real) <= 1;
+        })
+        .slice(0, 3);
+---
+
+<Base titulo={`${d.nome} | Bellatotti`} descricao={descricao} imagem={d.imagem} tipo="product">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumb)} />
+
+  <article class="produto">
+    <nav class="migalhas" aria-label="Navegação estrutural">
+      <a href="/">Início</a>
+      <span>/</span>
+      <a href="/#produtos">Coleção</a>
+    </nav>
+
+    <div class="produto-grid">
+      <figure class="produto-foto">
+        <img src={d.imagem} alt={d.alt} width="896" height="1152" loading="eager" />
+      </figure>
+
+      <div class="produto-info">
+        {d.etiqueta && <span class="produto-etiqueta">{d.etiqueta}</span>}
+        <h1>{d.nome}</h1>
+        <p class="produto-alt">{d.alt}</p>
+
+        {real !== null && (
+          <>
+            <dl class="medidas">
+              <div><dt>Salto</dt><dd>{altura} cm</dd></div>
+              <div><dt>Plataforma</dt><dd>{plataforma} cm</dd></div>
+              <div class="destaque"><dt>Inclinação real</dt><dd>{br(real)} cm</dd></div>
+            </dl>
+
+            <p class="explica">
+              {plataforma > 0 ? (
+                <>
+                  A plataforma de {plataforma} cm levanta a ponta do pé junto com o calcanhar. O
+                  ângulo que o pé realmente faz é a diferença entre as duas:{' '}
+                  <strong>{br(real)} cm</strong> — o mesmo de um salto raso de {real} cm.
+                </>
+              ) : (
+                <>
+                  Sem plataforma frontal, toda a altura do salto vira inclinação:{' '}
+                  <strong>{br(real)} cm</strong>.
+                </>
+              )}
+              {' '}Na coleção Bellatotti a inclinação real vai de {br(minReal)} a {br(maxReal)} cm.{' '}
+              <a href="/guias/salto-alto-que-nao-machuca/">Entenda por que essa é a medida que importa</a>.
+            </p>
+          </>
+        )}
+
+        {tipo && (
+          <p class="explica">
+            Construção: <strong>{tipo}</strong>.{' '}
+            <a href="/guias/meia-pata-mega-pata-salto-fino/">O que cada construção faz com o pé</a>.
+          </p>
+        )}
+
+        {d.numeracao && <p class="explica">Numeração: {d.numeracao}.</p>}
+
+        <div class="produto-btns">
+          {d.shopee && (
+            <a class="btn-shopee" href={d.shopee} target="_blank" rel="noopener">Comprar na Shopee</a>
+          )}
+          {d.mercadolivre && (
+            <a class="btn-ml" href={d.mercadolivre} target="_blank" rel="noopener">Mercado Livre</a>
+          )}
+          <a class="btn-direto" href={LOJAS.whatsapp} target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+
+        <p class="nota">
+          Preço, numerações disponíveis e frete estão sempre atualizados nas lojas.
+        </p>
+      </div>
+    </div>
+
+    {parecidos.length > 0 && (
+      <section class="parecidos">
+        <h2>Inclinação parecida</h2>
+        <p class="parecidos-intro">
+          Modelos que colocam o pé num ângulo semelhante, mesmo com alturas de salto diferentes.
+        </p>
+        <div class="parecidos-grid">
+          {parecidos.map((p) => {
+            const r = p.data.altura! - (p.data.plataforma ?? 0);
+            return (
+              <a class="parecido" href={`/produtos/${p.id}/`}>
+                <img src={p.data.imagem} alt={p.data.alt} width="896" height="1152" loading="lazy" />
+                <span class="parecido-nome">{p.data.nome}</span>
+                <span class="parecido-med">
+                  salto {p.data.altura} · real {br(r)} cm
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .produto { max-width: 1100px; margin: 0 auto; padding: 140px 40px 100px; }
+
+  .migalhas {
+    display: flex; gap: 10px; align-items: center;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 40px;
+  }
+  .migalhas a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+  .migalhas a:hover { color: var(--gold-dark); }
+
+  .produto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+
+  .produto-foto { margin: 0; background: #f4f1ec; }
+  .produto-foto img { width: 100%; height: auto; display: block; }
+
+  .produto-etiqueta {
+    display: inline-block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-dark); border: 1px solid currentColor; padding: 4px 10px; margin-bottom: 18px;
+  }
+
+  .produto-info h1 { font-size: clamp(32px, 4vw, 46px); margin: 0 0 8px; line-height: 1.15; }
+  .produto-alt { color: var(--text-muted); font-size: 15px; margin: 0 0 32px; }
+
+  .medidas { display: flex; gap: 0; margin: 0 0 28px; border-top: 1px solid rgba(13,13,13,0.12); }
+  .medidas > div {
+    flex: 1; padding: 18px 0; border-bottom: 1px solid rgba(13,13,13,0.12);
+  }
+  .medidas dt {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 6px;
+  }
+  .medidas dd { margin: 0; font-size: 28px; font-family: var(--font-serif, serif); }
+  .medidas .destaque dd { color: var(--gold-dark); }
+
+  .explica { font-size: 15px; line-height: 1.7; color: var(--text-body, #3a3a3a); margin: 0 0 18px; }
+  .explica a { color: var(--gold-dark); }
+
+  .produto-btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0 16px; }
+  .produto-btns > a { flex: 1 1 150px; }
+  .produto-btns .btn-direto { flex-basis: 100%; }
+
+  .nota { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+  .parecidos { margin-top: 90px; }
+  .parecidos h2 { font-size: 26px; margin: 0 0 6px; }
+  .parecidos-intro { color: var(--text-muted); font-size: 15px; margin: 0 0 28px; }
+  .parecidos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .parecido { text-decoration: none; color: inherit; display: block; }
+  .parecido img { width: 100%; height: auto; display: block; background: #f4f1ec; }
+  .parecido-nome { display: block; margin-top: 10px; font-size: 15px; }
+  .parecido-med {
+    display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--text-muted); margin-top: 2px;
+  }
+
+  @media (max-width: 860px) {
+    .produto { padding: 120px 20px 70px; }
+    .produto-grid { grid-template-columns: 1fr; gap: 32px; }
+    .parecidos-grid { grid-template-columns: 1fr; }
+  }
+</style>
