@@ -47,7 +47,6 @@ const br = (n: number) => String(+n.toFixed(1)).replace('.', ',');
 const fotos = [d.imagem, ...d.galeria.filter((g) => g !== d.imagem)];
 
 const urlAbs = new URL(`/produtos/${produto.id}/`, Astro.site).href;
-const imagemAbs = new URL(d.imagem, Astro.site).href;
 const titulo = `${d.nome} — ${d.alt}`;
 
 const descricao =
@@ -55,23 +54,12 @@ const descricao =
     ? `${d.alt}. Salto de ${altura} cm com plataforma de ${plataforma} cm: inclinação real de ${br(real)} cm. Medidas conferidas, numeração e onde comprar.`
     : `${d.alt}. Veja as medidas, a numeração e onde comprar.`;
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: d.nome,
-  description: descricao,
-  image: fotos.map((f) => new URL(f, Astro.site).href),
-  brand: { '@type': 'Brand', name: 'Bellatotti' },
-  category: 'Calçados femininos > Sandálias de salto',
-  ...(real !== null && {
-    additionalProperty: [
-      { '@type': 'PropertyValue', name: 'Altura do salto', value: `${altura} cm` },
-      { '@type': 'PropertyValue', name: 'Altura da plataforma', value: `${plataforma} cm` },
-      { '@type': 'PropertyValue', name: 'Inclinação real', value: `${real} cm` },
-    ],
-  }),
-  url: urlAbs,
-};
+// Nao declaramos @type: Product. O Google so valida fragmentos de produto com
+// "offers", "review" ou "aggregateRating" — e nenhum se aplica: o site nao vende
+// (os precos estao na Shopee e no Mercado Livre, e mudam) nem tem avaliacoes
+// proprias. Declarar Product sem eles gera erro na Search Console sem ganho
+// nenhum, porque sem preco a pagina nunca seria elegivel para rich result.
+// Ficam o BreadcrumbList e os metadados normais da pagina.
 
 const breadcrumb = {
   '@context': 'https://schema.org',
@@ -97,7 +85,6 @@ const parecidos =
 ---
 
 <Base titulo={`${d.nome} | Bellatotti`} descricao={descricao} imagem={d.imagem} tipo="product">
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumb)} />
 
   <article class="produto">
